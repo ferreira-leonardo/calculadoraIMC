@@ -8,22 +8,19 @@ const calcular = () => {
     let imc = (peso.value/altura.value**2)
 
     if(nome.value != '' && altura.value != '' && peso.value != ''){
+        let classificação = '';
         if(imc < 18.5){
-            resultado.innerHTML = `
-            ${nome.value} seu IMC é ${imc.toFixed(2)} e você está abaixo do peso`;
+            classificação =  'na faixa abaixo do peso';
         } else if(imc < 24.99){
-            resultado.innerHTML = `
-            ${nome.value} seu IMC é ${imc.toFixed(2)} e seu peso está normal`;
+           classificação = 'na faixa normal';
         } else if(imc < 29.99){
-            resultado.innerHTML = `
-            ${nome.value} seu IMC é ${imc.toFixed(2)} e você está no sobrepeso`;
+            classificação = 'na faixa sobrepeso';
         } else {
-            resultado.innerHTML = `
-            ${nome.value} seu IMC é ${imc.toFixed(2)} e você está na obesidade`;
+            classificação = 'na faixa obesidade';
         }
+        resultado.innerHTML = `${nome.value} seu IMC é ${imc.toFixed(2)} e você está ${classificação}`;
     } else {
         resultado.innerHTML = 'Preencha todos os dados'
     }
 }
-
 buttom.addEventListener('click', calcular)
